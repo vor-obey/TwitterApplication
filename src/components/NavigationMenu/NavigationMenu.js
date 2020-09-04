@@ -3,20 +3,20 @@ import "./NavigationMenu.sass";
 import {Link} from "react-router-dom";
 
 const NavigationMenu = () => {
-
   return (
     <div className="navigation-menu">
       <div className="wrapper">
-      <div className="twitter-logo"><i className="fab fa-twitter"/></div>
+        <div className="twitter-logo"><i className="fab fa-twitter"/></div>
         <ul className="list-items">
 
-          <Link to="/profile"><li><i className="fas fa-user-tie fas-logo"/>Profile</li></Link>
+          <li><Link to="/"><i className="fas fa-user-tie fas-logo"/>Profile</Link></li>
 
-          <Link to="/users"><li><i className="fas fa-users fas-logo"/>All users</li></Link>
+          <li><Link to="/users"><i className="fas fa-users fas-logo"/>All users</Link></li>
 
         </ul>
       </div>
     </div>
   )
 }
+
 export default NavigationMenu;

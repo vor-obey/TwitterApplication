@@ -4,8 +4,9 @@ import {createBrowserHistory} from "history";
 import './App.css';
 import {Auth} from "./containers/Auth/Auth";
 import MainContainer from "./containers/MainContainer/MainContainer";
-import {BrowserRouter} from "react-router-dom";
-import {getUserData} from "./getUserData";
+import {BrowserRouter as Router, Switch} from "react-router-dom";
+import {Route} from "react-router";
+import {OauthCallback} from "./containers/OauthCallback/OauthCallback";
 
 const history = createBrowserHistory();
 
@@ -22,50 +23,45 @@ class App extends Component {
     const isLogin = !!localStorage.getItem("token-data");
     this.setState({isLogin});
 
-    const code =
-      window.location.href.match(/\?code=(.*)/) &&
-      window.location.href.match(/\?code=(.*)/)[1];
-
-    if (!isLogin && !code) {
-      history.push("/");
-      return;
-    }
-
-    // TODO: Check url
-    if (!isLogin && code) {
-      const user = getUserData(code);
-
-      if (user) {
-        this.setState({isLogin}, () => {
-          // TODO: Set user in the redux store
-          history.push("/profile");
-        });
-      } else {
-        // TODO display error to a user
-      }
+    if (!isLogin && !window.location.href.includes("/oauth-callback")) {
+      history.replace("/login");
     }
   };
 
-  handleLogout = () => {
-    this.setState({
-      isLogin: false
+  onSuccessfullyAuth = () => {
+    this.setState({isLogin: true}, () => {
+      window.location.replace("/");
+    });
+  }
+
+  handleLogout = (state) => {
+    localStorage.clear()
+    this.setState( {
+      isLogin: state
     })
   }
 
   render() {
-    console.log(this.state.isLogin)
     if (this.state.isLogin === null) {
       return null;
     }
-
     return (
-      <BrowserRouter history={history}>
+      <Router history={history}>
+
         {!this.state.isLogin
-          ? <Auth/>
-          : <MainContainer handleLogout={this.handleLogout}/>}
-      </BrowserRouter>
+          ? <Switch>
+            <Route exact path="/login" component={Auth}/>
+            <Route exact path="/oauth-callback" render={props => (
+              <OauthCallback {...props} onSuccessfullyAuth={this.onSuccessfullyAuth}/>
+            )}/>
+          </Switch>
+          : <MainContainer handleLogout={this.handleLogout}/>
+        }
+      </Router>
     );
   }
 }
 
 export default App;
+
+

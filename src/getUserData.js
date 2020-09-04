@@ -16,35 +16,28 @@ export const getUserData = async (code) => {
     const authData = await authResponse.json();
     localStorage.setItem("token-data", JSON.stringify(authData.access_token))
     localStorage.setItem("user-id", JSON.stringify(authData.user.id))
-
     await addDataToDb(authData);
 
     return authData.user;
   } catch (e) {
     return null;
   }
-
 }
 
-const addDataToDb = (data) => {
+export const addDataToDb = async (data) => {
   const url = "http://localhost:3002/users/"
-  fetch(url)
-    .then((response) => {
-      {
-        response.id == data.id
-          ? console.log(new Error("Such element already exists"))
-          : fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json;charset=utf-8"
-            },
-            body: JSON.stringify(data)
-          })
-            .then(response => response.json())
-            .then(data => console.log(data))
-      }
+  const dataFromDb = await fetch(url)
+  dataFromDb.id === data.id
+    ? console.log(new Error("Such element already exists"))
+    : await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8"
+      },
+      body: JSON.stringify(data)
     })
 }
+
 
 
 
