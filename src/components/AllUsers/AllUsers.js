@@ -11,13 +11,25 @@ class AllUsers extends Component {
     this.props.getAllUsers();
   }
 
+
   render() {
+    const {users} = this.props;
+    const currentUser = +localStorage.getItem("user-id");
     return (
-      <div>
         <div className="feed">
-          <UsersList />
+          {users.map(user => (
+            user.id !== currentUser &&
+            <UsersList
+              uniqueId={user.id}
+              getId={() => this.props.getUserId(user.id)}
+              key={user.id}
+              avatar={user.avatar_url}
+              name={user.name}
+              login={user.login}
+              createDate={user.createDate}
+            />
+          ))}
         </div>
-      </div>
     );
   }
 }

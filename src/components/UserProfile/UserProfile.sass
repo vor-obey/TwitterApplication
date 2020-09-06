@@ -1,11 +1,13 @@
 @import "src/variables/variables-color"
 
 .user-profile
-  border-right: 1px solid #E6ECF0
   width: 700px
-  padding: 0 10px 0 10px
+  min-width: 400px
   position: relative
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4)
+  border-right: 1px solid #E6ECF0
+  margin-right: 20px
+  >h2
+    padding-left: 10px
 
 .background-user-logo
   width: 100%
@@ -15,7 +17,7 @@
   margin-bottom: 65px
 
 .user-logotype
-  border: 3px solid #fff
+  border: 4px solid #fff
   border-radius: 50%
   width: 120px
   height: 120px
@@ -26,6 +28,7 @@
 .user-profile-data
   color: #778794
   margin-bottom: 50px
+  padding: 0 10px
 
   p
     line-height: 1
@@ -39,22 +42,25 @@
 
 .users-tweets
   margin-bottom: 40px
-  p
-    font-size: 22px
-    font-weight: 700
-    color: #778794
-    position: relative
-    border-bottom: 1px solid #778794
-    padding-bottom: 10px
+  font-size: 20px
+  font-weight: 700
+  color: #778794
+  position: relative
+  border-bottom: 1px solid #778794
+  padding-bottom: 10px
+  padding-left: 10px
+  span
+    padding-bottom: 8px
+    cursor: pointer
 
-    &:after
-      content: ""
-      position: absolute
-      left: 0
-      top: 38px
-      background: $main-blue
-      height: 2px
-      width: 80px
+  span + span
+    margin-left: 20px
+
+  span:hover
+    border-bottom: 2px solid $main-blue
+
+.active
+  color: $main-blue
 
 .tweets-user-info
   display: flex

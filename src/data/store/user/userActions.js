@@ -1,4 +1,4 @@
-import { GET_CURRENT_USER, GET_ALL_USERS } from "../actionsTypes";
+import {GET_CURRENT_USER, GET_ALL_USERS} from "../actionsTypes";
 
 export const getCurrentUser = () => ({
   type: GET_CURRENT_USER

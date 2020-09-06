@@ -1,24 +1,40 @@
-import {CREATE_POST_REQUEST, GET_ALL_POSTS_SUCCESS} from "../actionsTypes";
-
+import {CREATE_POST_SUCCESS, GET_POSTS_CURRENT_USER, GET_POSTS_REQUESTING, GET_POSTS_SUCCESS,} from "../actionsTypes";
 
 const initialState = {
   posts: [],
-  loading: false
+  postsCurrentUser: [],
+  loading: null
 }
 export const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_POST_REQUEST: {
+
+    case CREATE_POST_SUCCESS: {
+      return {
+        ...state,
+        posts: action.payload.posts,
+
+      }
+    }
+
+    case GET_POSTS_REQUESTING: {
       return {
         ...state,
         loading: true
       }
     }
 
-    case GET_ALL_POSTS_SUCCESS: {
+    case GET_POSTS_SUCCESS: {
       return {
         ...state,
         posts: action.payload.posts,
         loading: false
+      }
+    }
+
+    case GET_POSTS_CURRENT_USER: {
+      return {
+        ...state,
+        postsCurrentUser: action.posts
       }
     }
     default:

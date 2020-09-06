@@ -17,7 +17,27 @@ class App extends Component {
 
   componentDidMount() {
     this.checkLoginStatus();
+    setInterval(this.dateLastVisit, 30000)
   }
+
+  componentWillUnmount() {
+    clearInterval(setInterval(this.dateLastVisit, 3000))
+  }
+
+  dateLastVisit = async () => {
+     const userId = +localStorage.getItem("user-id");
+     await fetch(`http://localhost:3002/users/${userId}`,{
+       method: "PATCH",
+       headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json',
+       },
+       body:  JSON.stringify({
+         Test_date: new Date()
+       })
+     });
+  }
+
 
   checkLoginStatus = async () => {
     const isLogin = !!localStorage.getItem("token-data");
@@ -36,7 +56,7 @@ class App extends Component {
 
   handleLogout = (state) => {
     localStorage.clear()
-    this.setState( {
+    this.setState({
       isLogin: state
     })
   }
@@ -47,6 +67,7 @@ class App extends Component {
     }
     return (
       <Router history={history}>
+        <button onClick={this.dateLastVisit}>Click</button>
 
         {!this.state.isLogin
           ? <Switch>

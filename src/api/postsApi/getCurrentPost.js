@@ -1,5 +1,7 @@
 //Отправляем созданный пост в базу данных
 
+import {DateOfLastVisit} from "../../DateOfLastVisit/Date";
+
 export const getCurrentPost = async function (creatorId, message, userImg, name, email) {
   const response = await fetch("http://localhost:3002/posts", {
       method: "POST",
@@ -9,7 +11,7 @@ export const getCurrentPost = async function (creatorId, message, userImg, name,
       body: JSON.stringify({
         creatorId,
         message,
-        createdAt: new Date(),
+        createdAt: DateOfLastVisit(),
         userImg,
         name,
         email

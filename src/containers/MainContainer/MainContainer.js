@@ -4,8 +4,18 @@ import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 import {Switch, Route,} from "react-router";
 import AllUsers from "../../components/AllUsers/AllUsers";
 import UserProfile from "../../components/UserProfile/UserProfile";
+import UserPage from "../../pages/UserPage/UserPage";
 
 class MainContainer extends Component {
+  state = ({
+    userId: null
+  })
+
+   getUserId = (id) => {
+    this.setState({
+      userId: id
+    })
+  }
 
   render() {
     return (
@@ -13,10 +23,17 @@ class MainContainer extends Component {
         <NavigationMenu/>
 
         <Switch>
-          <Route exact path="/" render={props => (
+          <Route exact path="/" render={() => (
             <UserProfile handleLogout={this.props.handleLogout}/>
           )}/>
-          <Route exact path="/users" component={AllUsers}/>
+
+          <Route exact path="/users" render={() => (
+            <AllUsers getUserId={this.getUserId}/>
+          )}/>
+
+          <Route exact path={`/user`} render={() => (
+            <UserPage userId={this.state.userId}/>
+            )}/>
         </Switch>
 
       </div>

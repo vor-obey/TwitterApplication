@@ -8,9 +8,9 @@ export class Button extends Component {
     const {link, onClick, text, styleBtn} = this.props;
 
     return (
-      <button className={`main-button ${styleBtn}`}>
+      <div className={`main-button ${styleBtn}`}>
         <Link to={link} onClick={onClick}>{text}</Link>
-      </button>
+      </div>
     )
   }
 }

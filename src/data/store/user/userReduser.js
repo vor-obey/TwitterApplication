@@ -1,5 +1,4 @@
 import {
-  GET_CURRENT_USER_REQUESTING,
   GET_CURRENT_USER_SUCCESS,
   GET_ALL_USERS_SUCCESS,
 } from "../actionsTypes";
@@ -13,12 +12,6 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case GET_CURRENT_USER_REQUESTING: {
-      return {
-        ...state,
-        loading: true
-      }
-    }
     case GET_CURRENT_USER_SUCCESS: {
       return {
         ...state,
