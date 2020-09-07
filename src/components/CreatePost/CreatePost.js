@@ -42,9 +42,8 @@ class CreatePost extends Component {
           />
         </div>
 
-
         <Button
-          link={""}
+          link={"/feed"}
           onClick={this.createNewPost}
           text={"Post"}
           styleBtn={"post"}

@@ -13,6 +13,8 @@ const NavigationMenu = () => {
 
           <li><Link to="/users"><i className="fas fa-users fas-logo"/>All users</Link></li>
 
+          <li><Link to="/feed"><i className="fas fa-paste fas-logo"/>Feed</Link></li>
+
         </ul>
       </div>
     </div>

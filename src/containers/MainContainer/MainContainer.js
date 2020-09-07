@@ -5,6 +5,7 @@ import {Switch, Route,} from "react-router";
 import AllUsers from "../../components/AllUsers/AllUsers";
 import UserProfile from "../../components/UserProfile/UserProfile";
 import UserPage from "../../pages/UserPage/UserPage";
+import Feed from "../../pages/Feed/Feed";
 
 class MainContainer extends Component {
   state = ({
@@ -15,6 +16,7 @@ class MainContainer extends Component {
     this.setState({
       userId: id
     })
+     console.log(this.state.userId)
   }
 
   render() {
@@ -31,9 +33,13 @@ class MainContainer extends Component {
             <AllUsers getUserId={this.getUserId}/>
           )}/>
 
-          <Route exact path={`/user`} render={() => (
+          <Route exact path={`/feed`} render={() => (
+            <Feed getUserId={this.getUserId}/>
+          )}/>
+
+          <Route exact path={`/user/${this.state.userId}`} render={() => (
             <UserPage userId={this.state.userId}/>
-            )}/>
+          )}/>
         </Switch>
 
       </div>

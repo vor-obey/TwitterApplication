@@ -12,33 +12,16 @@ import {getPosts} from "../../data/store/posts/postAction";
 
 class UserProfile extends Component {
 
-  state = ({
-    allPosts: true
-  })
-
   componentDidMount() {
+    this.props.getPosts();
+
     if (this.props.currentUser !== null) {
-      return null
+      return null;
     } else {
-      this.props.getCurrentUser()
-      this.props.getPosts()
+      this.props.getCurrentUser();
     }
   }
 
-  getAllPosts = () => {
-    this.setState({
-      allPosts: true
-    })
-  }
-
-  getUserPosts = () => {
-   const currentUserId = this.props.currentUser.id;
-   const posts = this.props.posts.filter(post => +post.creatorId === currentUserId);
-   this.props.getPostsCurrentUser(posts);
-   this.setState({
-     allPosts: false
-   })
-  }
 
   dateRegistration = () => {
     const fullDate = this.props.currentUser.created_at;
@@ -74,19 +57,12 @@ class UserProfile extends Component {
           </div>
 
           <p className="users-tweets">
-            <span className={this.state.allPosts ? "active" : ""} onClick={this.getAllPosts}>Tweets</span>
-            <span className={!this.state.allPosts ? "active" : ""} onClick={this.getUserPosts}>My tweets</span>
+            <span>Tweets</span>
           </p>
-
-
-          <CreatePost
-            currentUser={this.props.currentUser}
-            createPost={this.props.createPost}
-          />
 
           {this.props.loadingPosts
             ? <Loader/>
-            : (this.state.allPosts ? <Posts posts={this.props.posts}/> : <Posts posts={this.props.postsCurrentUser}/>)
+            : <Posts posts={this.props.postsCurrentUser}/>
           }
 
         </div>
@@ -107,7 +83,6 @@ const mapDispatchToProps = (dispatch) => ({
   getPosts: () => dispatch(getPosts()),
   getCurrentUser: () => dispatch(getCurrentUser()),
   createPost: (text, id, userImg, name, email) => dispatch(createPost(text, id, userImg, name, email)),
-  getPostsCurrentUser: (posts) => dispatch(getPostsCurrentUser(posts))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

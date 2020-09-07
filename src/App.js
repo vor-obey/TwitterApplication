@@ -67,7 +67,6 @@ class App extends Component {
     }
     return (
       <Router history={history}>
-        <button onClick={this.dateLastVisit}>Click</button>
 
         {!this.state.isLogin
           ? <Switch>

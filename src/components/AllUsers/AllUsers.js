@@ -11,12 +11,11 @@ class AllUsers extends Component {
     this.props.getAllUsers();
   }
 
-
   render() {
     const {users} = this.props;
     const currentUser = +localStorage.getItem("user-id");
     return (
-        <div className="feed">
+        <div className="all-users">
           {users.map(user => (
             user.id !== currentUser &&
             <UsersList
