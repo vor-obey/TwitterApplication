@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import "./UserProfile.sass";
-import CreatePost from "../CreatePost/CreatePost";
-import {Posts} from "../Posts/Posts";
+import "./Home.sass";
 import {connect} from "react-redux";
-import {getCurrentUser} from "../../data/store/user/userActions";
-import {createPost, getPostsCurrentUser} from "../../data/store/posts/postAction";
-import {Loader} from "../Loader/Loader";
+
+import {Posts} from "../../components/Posts/Posts";
+import {Loader} from "../../components/Loader/Loader";
 import {Button} from "../../Button/Button";
+
+import {getCurrentUser} from "../../data/store/user/userActions";
 import {getPosts} from "../../data/store/posts/postAction";
+import {Link} from "react-router-dom";
 
-
-class UserProfile extends Component {
+class Home extends Component {
 
   componentDidMount() {
     this.props.getPosts();
@@ -22,10 +22,9 @@ class UserProfile extends Component {
     }
   }
 
-
   dateRegistration = () => {
-    const fullDate = this.props.currentUser.created_at;
-    return fullDate.slice(0,10)
+    const dateRegistration = this.props.currentUser.created_at;
+    return dateRegistration.slice(0,10)
   }
 
   render() {
@@ -62,7 +61,10 @@ class UserProfile extends Component {
 
           {this.props.loadingPosts
             ? <Loader/>
-            : <Posts posts={this.props.postsCurrentUser}/>
+            : this.props.postsCurrentUser.length !==0
+             ? <Posts posts={this.props.postsCurrentUser}/>
+             : <p className="warning-message">You haven’t Tweeted any posts yet.
+                Follow <Link to="/feed">this link</Link> to create your first post</p>
           }
 
         </div>
@@ -74,7 +76,6 @@ class UserProfile extends Component {
 const mapStateToProps = state => ({
   currentUser: state.users.currentUser,
   loading: state.users.loading,
-  posts: state.posts.posts,
   loadingPosts: state.posts.loading,
   postsCurrentUser: state.posts.postsCurrentUser
 })
@@ -82,7 +83,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
   getPosts: () => dispatch(getPosts()),
   getCurrentUser: () => dispatch(getCurrentUser()),
-  createPost: (text, id, userImg, name, email) => dispatch(createPost(text, id, userImg, name, email)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

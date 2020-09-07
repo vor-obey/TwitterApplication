@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./AllUsers.sass";
-import {UsersList} from "../UsersList/UsersList";
+import {UsersList} from "../../components/UsersList/UsersList";
 import {getAllUsers} from "../../data/store/user/userActions";
 import {connect} from "react-redux";
 
@@ -25,7 +25,7 @@ class AllUsers extends Component {
               avatar={user.avatar_url}
               name={user.name}
               login={user.login}
-              createDate={user.createDate}
+              createDate={user.Test_date}
             />
           ))}
         </div>

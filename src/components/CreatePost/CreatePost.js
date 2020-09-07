@@ -14,22 +14,21 @@ class CreatePost extends Component {
   }
 
   createNewPost = () => {
-    const props = this.props.currentUser;
-    const userImg = props.avatar_url;
-    const userName = props.name;
-    const userEmail = props.email;
-    const userId = localStorage.getItem("user-id")
-    if(this.state.textArea.length < 5){
-      return alert("Минимальная длинна поста 5 символов")
-    }
-    this.props.createPost(this.state.textArea, userId, userImg, userName, userEmail)
-    this.setState({
-      textArea: ""
-    })
+      const props = this.props.currentUser;
+      const userImg = props.avatar_url;
+      const userName = props.name;
+      const userEmail = props.email;
+      const userId = localStorage.getItem("user-id")
+      if(this.state.textArea.length < 5){
+        return alert("Минимальная длинна поста 5 символов")
+      }
+      this.props.createPost(this.state.textArea, userId, userImg, userName, userEmail)
+      this.setState({
+        textArea: ""
+      })
   }
 
   render() {
-
     return (
       <div className="tweets">
         <div className="textarea-container">

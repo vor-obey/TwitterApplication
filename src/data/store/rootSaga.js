@@ -1,5 +1,5 @@
 import {takeLatest} from "redux-saga/effects"
-import {GET_POSTS_REQUESTING, GET_ALL_USERS, GET_CURRENT_USER, CREATE_POST, USER_LOG_OUT} from "./actionsTypes";
+import {GET_POSTS_REQUESTING, GET_ALL_USERS, GET_CURRENT_USER, CREATE_POST} from "./actionsTypes";
 import * as userSaga from "./user/userSaga";
 import * as postSaga from "./posts/postSaga";
 

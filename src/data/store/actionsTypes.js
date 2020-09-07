@@ -3,22 +3,10 @@ export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
 
-export const GET_CREATOR_USER_DATE = "GET_CREATOR_USER_DATE";
-export const USER_LOG_OUT = "USER_LOG_OUT";
-
-
-
 //------------------------------------------------------
 
 export const CREATE_POST = "CREATE_POST";
-export const CREATE_POST_REQUEST = "CREATE_POST_REQUEST";
 export const CREATE_POST_SUCCESS = "CREATE_POST_SUCCESS";
-
 export const GET_POSTS_CURRENT_USER = "GET_POSTS_CURRENT_USER";
-
-
-
-
-
-export const GET_POSTS_REQUESTING = "ADD_POSTS_REQUESTING";
-export const GET_POSTS_SUCCESS = "ADD_POSTS_SUCCESS";
+export const GET_POSTS_REQUESTING = "GET_POSTS_REQUESTING";
+export const GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS";

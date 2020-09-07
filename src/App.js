@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import {createBrowserHistory} from "history";
 
 import './App.css';
-import {Auth} from "./containers/Auth/Auth";
+import {Auth} from "./pages/Auth/Auth";
 import MainContainer from "./containers/MainContainer/MainContainer";
 import {BrowserRouter as Router, Switch} from "react-router-dom";
 import {Route} from "react-router";
 import {OauthCallback} from "./containers/OauthCallback/OauthCallback";
+import {dateNow} from "./DateOfLastVisit/Date";
 
 const history = createBrowserHistory();
 
@@ -17,11 +18,11 @@ class App extends Component {
 
   componentDidMount() {
     this.checkLoginStatus();
-    setInterval(this.dateLastVisit, 30000)
+    this.lastVisitInterval =  setInterval(this.dateLastVisit, 30000);
   }
 
   componentWillUnmount() {
-    clearInterval(setInterval(this.dateLastVisit, 3000))
+    clearInterval(this.lastVisitInterval);
   }
 
   dateLastVisit = async () => {
@@ -33,7 +34,7 @@ class App extends Component {
          'Content-Type': 'application/json',
        },
        body:  JSON.stringify({
-         Test_date: new Date()
+         Test_date: dateNow()
        })
      });
   }
@@ -55,7 +56,7 @@ class App extends Component {
   }
 
   handleLogout = (state) => {
-    localStorage.clear()
+    localStorage.clear();
     this.setState({
       isLogin: state
     })
@@ -67,7 +68,6 @@ class App extends Component {
     }
     return (
       <Router history={history}>
-
         {!this.state.isLogin
           ? <Switch>
             <Route exact path="/login" component={Auth}/>

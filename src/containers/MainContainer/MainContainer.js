@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import "./MainContainer.sass";
 import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 import {Switch, Route,} from "react-router";
-import AllUsers from "../../components/AllUsers/AllUsers";
-import UserProfile from "../../components/UserProfile/UserProfile";
+import AllUsers from "../../pages/AllUsers/AllUsers";
 import UserPage from "../../pages/UserPage/UserPage";
 import Feed from "../../pages/Feed/Feed";
+import Home from "../../pages/Home/Home";
 
 class MainContainer extends Component {
   state = ({
@@ -26,7 +26,7 @@ class MainContainer extends Component {
 
         <Switch>
           <Route exact path="/" render={() => (
-            <UserProfile handleLogout={this.props.handleLogout}/>
+            <Home handleLogout={this.props.handleLogout}/>
           )}/>
 
           <Route exact path="/users" render={() => (

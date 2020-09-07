@@ -27,6 +27,8 @@ export function* getPostsSaga() {
   yield put ({type: GET_POSTS_SUCCESS, payload: {posts: allPosts}})
 }
 
+
+
 const getUserPosts = (allPosts) => {
   const currentUserId = localStorage.getItem("user-id");
   return allPosts.filter(post => +post.creatorId === +currentUserId);
