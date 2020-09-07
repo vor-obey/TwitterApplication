@@ -20,7 +20,7 @@ class CreatePost extends Component {
       const userEmail = props.email;
       const userId = localStorage.getItem("user-id")
       if(this.state.textArea.length < 5){
-        return alert("Минимальная длинна поста 5 символов")
+        return alert("Minimum length post 5 symbol")
       }
       this.props.createPost(this.state.textArea, userId, userImg, userName, userEmail)
       this.setState({

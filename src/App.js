@@ -7,7 +7,7 @@ import MainContainer from "./containers/MainContainer/MainContainer";
 import {BrowserRouter as Router, Switch} from "react-router-dom";
 import {Route} from "react-router";
 import {OauthCallback} from "./containers/OauthCallback/OauthCallback";
-import {dateNow} from "./DateOfLastVisit/Date";
+import {dateLastVisit} from "./api/userApi/dateLastVisit";
 
 const history = createBrowserHistory();
 
@@ -18,27 +18,12 @@ class App extends Component {
 
   componentDidMount() {
     this.checkLoginStatus();
-    this.lastVisitInterval =  setInterval(this.dateLastVisit, 30000);
+    this.lastVisitInterval =  setInterval(dateLastVisit, 30000);
   }
 
   componentWillUnmount() {
     clearInterval(this.lastVisitInterval);
   }
-
-  dateLastVisit = async () => {
-     const userId = +localStorage.getItem("user-id");
-     await fetch(`http://localhost:3002/users/${userId}`,{
-       method: "PATCH",
-       headers: {
-         Accept: 'application/json',
-         'Content-Type': 'application/json',
-       },
-       body:  JSON.stringify({
-         Test_date: dateNow()
-       })
-     });
-  }
-
 
   checkLoginStatus = async () => {
     const isLogin = !!localStorage.getItem("token-data");

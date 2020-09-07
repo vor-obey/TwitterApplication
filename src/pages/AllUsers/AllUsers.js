@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import "./AllUsers.sass";
 import {UsersList} from "../../components/UsersList/UsersList";
-import {getAllUsers} from "../../data/store/user/userActions";
+import {getAllUsers, getCurrentUser} from "../../data/store/user/userActions";
 import {connect} from "react-redux";
-
 
 class AllUsers extends Component {
 
   componentDidMount() {
     this.props.getAllUsers();
+    this.props.getCurrentUser();
   }
 
   render() {
@@ -38,7 +38,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllUsers: () => dispatch(getAllUsers())
+  getAllUsers: () => dispatch(getAllUsers()),
+  getCurrentUser: () => dispatch(getCurrentUser()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllUsers);

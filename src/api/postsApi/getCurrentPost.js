@@ -1,6 +1,6 @@
 //Отправляем созданный пост в базу данных
 
-import {dateNow} from "../../DateOfLastVisit/Date";
+import {dateNow} from "../../DateNow/Date";
 
 export const getCurrentPost = async function (creatorId, message, userImg, name, email) {
   const response = await fetch("http://localhost:3002/posts", {

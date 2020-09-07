@@ -12,7 +12,7 @@ class UserPage extends Component {
 
   render() {
 
-    const {userId, users, posts, currentUser} = this.props;
+    const {userId, users, posts} = this.props;
 
     return (
       users.map(user => (
