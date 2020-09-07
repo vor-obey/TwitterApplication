@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import "./MainContainer.sass";
 import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
-import {Switch, Route,} from "react-router";
+import {Switch, Route, Redirect} from "react-router-dom";
 import AllUsers from "../../pages/AllUsers/AllUsers";
 import UserPage from "../../pages/UserPage/UserPage";
 import Feed from "../../pages/Feed/Feed";
 import Home from "../../pages/Home/Home";
+import {Index} from "../../pages/404";
 
 class MainContainer extends Component {
   state = ({
@@ -40,6 +41,10 @@ class MainContainer extends Component {
           <Route exact path={`/user/${this.state.userId}`} render={() => (
             <UserPage userId={this.state.userId}/>
           )}/>
+
+          <Route exact path="/notfound" component={Index}/>
+
+          <Redirect to="/notfound"/>
         </Switch>
 
       </div>

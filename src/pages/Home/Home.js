@@ -22,7 +22,7 @@ class Home extends Component {
     }
   }
 
-  dateRegistration = () => {
+   dateRegistration = () => {
     const dateRegistration = this.props.currentUser.created_at;
     return dateRegistration.slice(0,10)
   }

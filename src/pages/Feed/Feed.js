@@ -20,7 +20,7 @@ class Feed extends Component {
   }
 
   render() {
-    const {currentUser, createPost, getUserId, posts } = this.props;
+    const {currentUser, createPost, getUserId, posts} = this.props;
     return (
       <div className="feed">
 
@@ -28,8 +28,10 @@ class Feed extends Component {
           currentUser={currentUser}
           createPost={createPost}
         />
-
-        <Posts getUserId={getUserId} posts={posts}/>
+        {posts.length !== 0
+          ? <Posts getUserId={getUserId} posts={posts}/>
+          : <p className="warning-message">No posts found...</p>
+        }
 
       </div>
     )
@@ -37,8 +39,8 @@ class Feed extends Component {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.users.currentUser,
-    posts: state.posts.posts,
+  currentUser: state.users.currentUser,
+  posts: state.posts.posts,
 })
 
 const mapDispatchToProps = (dispatch) => ({

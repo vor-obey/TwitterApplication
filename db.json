@@ -45,7 +45,7 @@
         "collaborators": 0,
         "private_repos": 10000
       },
-      "Test_date": "07 Sep 20:41:01"
+      "Test_date": "07 Sep 23:12:19"
     },
     {
       "login": "VladKNT",
@@ -92,7 +92,7 @@
         "collaborators": 0,
         "private_repos": 10000
       },
-      "Test_date": "07 Sep 21:01:23"
+      "Test_date": "07 Sep 21:03:23"
     }
   ],
   "posts": [
@@ -113,6 +113,15 @@
       "name": "Vladyslav Kykot",
       "email": null,
       "id": 2
+    },
+    {
+      "creatorId": "61632484",
+      "message": "Third post!!",
+      "createdAt": "07 Sep 21:19:48",
+      "userImg": "https://avatars1.githubusercontent.com/u/61632484?v=4",
+      "name": "Victor",
+      "email": null,
+      "id": 3
     }
   ]
 }

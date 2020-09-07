@@ -4,9 +4,15 @@ import "./UserPage.sass";
 import {connect} from "react-redux";
 
 class UserPage extends Component {
+
+  dateRegistration = () => {
+    const dateRegistration = this.props.currentUser.created_at;
+    return dateRegistration.slice(0,10)
+  }
+
   render() {
 
-    const {userId, users, posts} = this.props;
+    const {userId, users, posts, currentUser} = this.props;
 
     return (
       users.map(user => (
@@ -23,8 +29,8 @@ class UserPage extends Component {
             <div className="user-profile-data">
               <h2 className="user-profile-data-name">{user.name}</h2>
               <p>{user.email ? user.email : user.login}</p>
-              <p><i className="far fa-calendar-alt"/>{user.created_at}</p>
-              <p>Repositories: {user.public_repos} </p>
+              <p><i className="far fa-calendar-alt"/>On GitHub since {this.dateRegistration()}</p>
+              <p>{user.name} is a developer with {user.public_repos} public repositories  </p>
             </div>
 
             <p className="user-tweets">Tweets</p>
@@ -54,7 +60,8 @@ class UserPage extends Component {
 
 const mapStateToProps = state => ({
   users: state.users.users,
-  posts: state.posts.posts
+  posts: state.posts.posts,
+  currentUser: state.users.currentUser
 
 })
 
