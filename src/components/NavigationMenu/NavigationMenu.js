@@ -6,7 +6,11 @@ const NavigationMenu = () => {
   return (
     <div className="navigation-menu">
       <div className="wrapper">
-        <div className="twitter-logo"><i className="fab fa-twitter"/></div>
+
+        <div className="twitter-logo">
+          <i className="fab fa-twitter"/>
+        </div>
+
         <ul className="list-items">
 
           <li><Link to="/"><i className="fas fa-user-tie fas-logo"/>Profile</Link></li>

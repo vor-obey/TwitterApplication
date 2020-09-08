@@ -18,5 +18,5 @@ export const getCurrentPost = async function (creatorId, message, userImg, name,
       })
     }
   );
-  return response.json()
+  return response.json();
 }

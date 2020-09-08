@@ -2,12 +2,13 @@ import {Component} from "react";
 import {getUserData} from "../../getUserData";
 
 export class OauthCallback extends Component {
+
   async componentDidMount() {
     const code =
       window.location.href.match(/\?code=(.*)/) &&
       window.location.href.match(/\?code=(.*)/)[1];
 
-    // TODO: Check url
+    // code - user code from github
 
     if (code) {
       const user = await getUserData(code);
@@ -15,8 +16,7 @@ export class OauthCallback extends Component {
       if (user) {
        this.props.onSuccessfullyAuth();
       } else {
-        // TODO display error to a user
-        alert("Error")
+        alert("Failed to register");
       }
     }
   }

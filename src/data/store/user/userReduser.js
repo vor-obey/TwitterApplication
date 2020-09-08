@@ -11,7 +11,6 @@ const initialState = {
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case GET_CURRENT_USER_SUCCESS: {
       return {
         ...state,
@@ -19,6 +18,7 @@ export const userReducer = (state = initialState, action) => {
         loading: false
       };
     }
+
     case GET_ALL_USERS_SUCCESS: {
       return {
         ...state,

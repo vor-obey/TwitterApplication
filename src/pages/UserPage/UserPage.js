@@ -62,7 +62,6 @@ const mapStateToProps = state => ({
   users: state.users.users,
   posts: state.posts.posts,
   currentUser: state.users.currentUser
-
 })
 
 export default connect(mapStateToProps, null)(UserPage);

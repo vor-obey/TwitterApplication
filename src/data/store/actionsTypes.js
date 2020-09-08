@@ -1,7 +1,7 @@
-export const GET_CURRENT_USER_SUCCESS = "GET_CURRENT_USER_SUCCESS";
-export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
+export const GET_CURRENT_USER_SUCCESS = "GET_CURRENT_USER_SUCCESS";
 
 //------------------------------------------------------
 

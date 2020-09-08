@@ -21,11 +21,17 @@ export function* createPost(action) {
   }
 }
 
+//--------------------------------------------------
+
 export function* getPostsSaga() {
-  const allPosts = yield call(getAllPosts);
-  const currentUserPosts = yield call(getAllPostsCurrentUser, allPosts);
-  yield put ({type:  GET_POSTS_CURRENT_USER, posts: currentUserPosts})
-  yield put ({type: GET_POSTS_SUCCESS, payload: {posts: allPosts}})
+  try{
+    const allPosts = yield call(getAllPosts);
+    const currentUserPosts = yield call(getAllPostsCurrentUser, allPosts);
+    yield put ({type:  GET_POSTS_CURRENT_USER, posts: currentUserPosts})
+    yield put ({type: GET_POSTS_SUCCESS, payload: {posts: allPosts}})
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 

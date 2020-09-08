@@ -8,15 +8,17 @@ import Feed from "../../pages/Feed/Feed";
 import Home from "../../pages/Home/Home";
 
 class MainContainer extends Component {
-  state = ({
-    userId: null
-  })
+  constructor(props) {
+    super(props);
+    this.state = ({
+      userId: null
+    })
+  }
 
-   getUserId = (id) => {
+  getUserId = (id) => {
     this.setState({
       userId: id
     })
-     console.log(this.state.userId)
   }
 
   render() {

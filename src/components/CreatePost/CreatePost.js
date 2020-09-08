@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./CreatePost.sass";
-import {Button} from "../../Button/Button";
+import {Button} from "../Button/Button";
 
 class CreatePost extends Component {
   state = ({
@@ -18,11 +18,11 @@ class CreatePost extends Component {
       const userImg = props.avatar_url;
       const userName = props.name;
       const userEmail = props.email;
-      const userId = localStorage.getItem("user-id")
+      const userId = localStorage.getItem("user-id");
       if(this.state.textArea.length < 5){
-        return alert("Minimum length post 5 symbol")
+        return alert("Minimum length post 5 symbol");
       }
-      this.props.createPost(this.state.textArea, userId, userImg, userName, userEmail)
+      this.props.createPost(this.state.textArea, userId, userImg, userName, userEmail);
       this.setState({
         textArea: ""
       })

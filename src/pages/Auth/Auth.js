@@ -9,7 +9,9 @@ export class Auth extends Component {
       <div className="auth-container">
         <div className="authorization">
           <h1>Sign in</h1>
-          <button><a href={url}>Sign in with GitHub</a></button>
+          <button>
+            <a href={url}>Sign in with GitHub</a>
+          </button>
         </div>
       </div>
     );

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {createBrowserHistory} from "history";
 
-import './App.css';
 import {Auth} from "./pages/Auth/Auth";
 import MainContainer from "./containers/MainContainer/MainContainer";
 import {BrowserRouter as Router, Switch} from "react-router-dom";

@@ -7,7 +7,14 @@ export const UsersList = (props) => {
     <div className="users-list">
       <div className="user-info">
 
-        <Link to={`/user/${props.uniqueId}`}><img onClick={props.getId} src={props.avatar} alt="ops"/></Link>
+        <Link to={`/user/${props.uniqueId}`}>
+
+          <img
+            onClick={props.getId}
+            src={props.avatar}
+            alt="ops"/>
+
+        </Link>
 
         <div className="user-data">
 

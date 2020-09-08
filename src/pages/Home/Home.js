@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import {Posts} from "../../components/Posts/Posts";
 import {Loader} from "../../components/Loader/Loader";
-import {Button} from "../../Button/Button";
+import {Button} from "../../components/Button/Button";
 
 import {getCurrentUser} from "../../data/store/user/userActions";
 import {getPosts} from "../../data/store/posts/postAction";
@@ -22,9 +22,13 @@ class Home extends Component {
     }
   }
 
-   dateRegistration = () => {
+  dateRegistration = () => {
     const dateRegistration = this.props.currentUser.created_at;
-    return dateRegistration.slice(0,10)
+    return dateRegistration.slice(0, 10);
+  }
+
+  logOut = () => {
+    this.props.handleLogout(false)
   }
 
   render() {
@@ -39,8 +43,9 @@ class Home extends Component {
           <Button
             styleBtn={"log-out"}
             link={"/login"}
-            onClick={() => this.props.handleLogout(false)}
-            text={"Log out"}/>
+            onClick={this.logOut}
+            text={"Log out"}
+          />
 
           <div className="background-user-logo">
             <img className="user-logotype"
@@ -52,7 +57,7 @@ class Home extends Component {
             <h2 className="user-profile-data-name">{name}</h2>
             <p>{email ? email : login}</p>
             <p><i className="far fa-calendar-alt"/>On GitHub since {this.dateRegistration()}</p>
-            <p>{ name} is a developer with {public_repos} public repositories  </p>
+            <p>{name} is a developer with {public_repos} public repositories </p>
           </div>
 
           <p className="users-tweets">
@@ -61,10 +66,12 @@ class Home extends Component {
 
           {this.props.loadingPosts
             ? <Loader/>
-            : this.props.postsCurrentUser.length !==0
-             ? <Posts posts={this.props.postsCurrentUser}/>
-             : <p className="warning-message">You haven’t Tweeted any posts yet.
-                Follow <Link to="/feed">this link</Link> to create your first post</p>
+            : this.props.postsCurrentUser.length !== 0
+
+              ? <Posts posts={this.props.postsCurrentUser}/>
+              : <p className="warning-message">You haven’t Tweeted any posts yet.
+                Follow <Link to="/feed">this link</Link> to create your first post
+              </p>
           }
 
         </div>

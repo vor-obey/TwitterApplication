@@ -6,17 +6,13 @@ import {createPost, getPosts} from "../../data/store/posts/postAction";
 import CreatePost from "../../components/CreatePost/CreatePost";
 import {getAllUsers, getCurrentUser} from "../../data/store/user/userActions";
 
-
 class Feed extends Component {
 
   componentDidMount() {
     this.props.getPosts();
     this.props.getAllUsers();
-
-   return this.props.currentUser !== null ? null : this.props.getCurrentUser()
-
+    return this.props.currentUser !== null ? null : this.props.getCurrentUser();
   }
-
 
   render() {
     const {currentUser, createPost, getUserId, posts} = this.props;
@@ -27,6 +23,7 @@ class Feed extends Component {
           currentUser={currentUser}
           createPost={createPost}
         />
+
         {posts.length !== 0
           ? <Posts getUserId={getUserId} posts={posts}/>
           : <p className="warning-message">No posts found...</p>

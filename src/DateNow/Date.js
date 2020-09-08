@@ -21,5 +21,4 @@ export const dateNow = () => {
   let seconds =newDate.getSeconds() < 10 ? `0${newDate.getSeconds()}` : newDate.getSeconds();
 
   return `${day} ${months[month]} ${hours}:${minutes}:${seconds}`;
-
 }
