@@ -8,7 +8,7 @@ let saga = createSagaMiddleware();
 
 store = createStore(rootReducer, compose(
   applyMiddleware(saga),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ));
 
 saga.run(rootSaga);
