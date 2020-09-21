@@ -1,6 +1,7 @@
 import React from "react";
 import "./NavigationMenu.sass";
 import {Link} from "react-router-dom";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
 
 const NavigationMenu = () => {
   return (
@@ -20,6 +21,9 @@ const NavigationMenu = () => {
           <li><Link to="/feed"><i className="fas fa-paste fas-logo"/>Feed</Link></li>
 
         </ul>
+
+        <LogOutBtn/>
+
       </div>
     </div>
   )

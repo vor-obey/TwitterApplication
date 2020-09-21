@@ -15,12 +15,9 @@ export const getUserData = async (code) => {
 
     const authData = await authResponse.json();
 
-    localStorage.setItem("token-data", JSON.stringify(authData.access_token))
-    localStorage.setItem("user-id", JSON.stringify(authData.user.id))
-
     await addDataToDb(authData.user);
 
-    return authData.user;
+    return [authData.user.id, authData.access_token]
 
   } catch (e) {
     return null;

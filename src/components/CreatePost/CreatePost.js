@@ -4,37 +4,37 @@ import {Button} from "../Button/Button";
 
 class CreatePost extends Component {
   state = ({
-    textArea: ""
+    postValue: ""
   })
 
   onChangeInputTextArea = (e) => {
     this.setState({
-      textArea: e.target.value
+      postValue: e.target.value
     })
   }
 
   createNewPost = () => {
-      const props = this.props.currentUser;
-      const userImg = props.avatar_url;
-      const userName = props.name;
-      const userEmail = props.email;
-      const userId = localStorage.getItem("user-id");
-      if(this.state.textArea.length < 5){
+      const {avatar_url, name, email, id} = this.props.user;
+      const {createPost} = this.props;
+      const {postValue} = this.state;
+
+      if(postValue.length < 5){
         return alert("Minimum length post 5 symbol");
       }
-      this.props.createPost(this.state.textArea, userId, userImg, userName, userEmail);
+      createPost(postValue, id, avatar_url, name, email);
       this.setState({
-        textArea: ""
+        postValue: ""
       })
   }
 
   render() {
+    const {postValue} = this.state;
     return (
       <div className="tweets">
         <div className="textarea-container">
           <textarea
             onChange={this.onChangeInputTextArea}
-            value={this.state.textArea}
+            value={postValue}
             name="add-tweet"
             rows="4"
             placeholder="Create new post..."

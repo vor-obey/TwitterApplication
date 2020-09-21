@@ -1,59 +1,25 @@
 import React, {Component} from "react";
-import "./UserPage.sass";
-
+import User from "../../components/User/User";
 import {connect} from "react-redux";
+import {setCurrentUserId} from "../../data/store/user/userActions";
 
 class UserPage extends Component {
-
-  dateRegistration = () => {
-    const dateRegistration = this.props.currentUser.created_at;
-    return dateRegistration.slice(0,10)
-  }
-
   render() {
+    const path = window.location.href.split("/");
+    const userId = Number(path[path.length-1]);
 
-    const {userId, users, posts} = this.props;
-
+    const {users, posts, postsLoading, userLoading, currentUserId, setCurrentUserId} = this.props;
+    const user = users.filter(user => user.id === userId)[0];
+    const userPosts = posts.filter(post => +post.creatorId === userId)
     return (
-      users.map(user => (
-          user.id === userId
-          && <div key={user.id} className="user-profile">
-            <h2>{user.name}</h2>
-
-            <div className="background-user-logo">
-              <img className="user-logotype"
-                   src={user.avatar_url}
-                   alt="Url not found"/>
-            </div>
-
-            <div className="user-profile-data">
-              <h2 className="user-profile-data-name">{user.name}</h2>
-              <p>{user.email ? user.email : user.login}</p>
-              <p><i className="far fa-calendar-alt"/>On GitHub since {this.dateRegistration()}</p>
-              <p>{user.name} is a developer with {user.public_repos} public repositories  </p>
-            </div>
-
-            <p className="user-tweets">Tweets</p>
-
-            {posts.map(post => +post.creatorId === userId &&
-              <div key={post.id} className="posts-container">
-                <div  className="user-post">
-                  <img src={post.userImg} alt="ops"/>
-
-                  <div className="post-block">
-                    <span className="user-name">{post.name}</span>
-                    <span className="user-email">{post.email}</span>
-                    <span className="create-date">{post.createdAt}</span>
-                    <p className="user-message">{post.message}</p>
-                  </div>
-
-                </div>
-              </div>
-            )}
-
-          </div>
-        )
-      )
+      <User
+      user={user}
+      posts={userPosts}
+      postsLoading={postsLoading}
+      userLoading={userLoading}
+      currentUserId={currentUserId}
+      setCurrentUserId={setCurrentUserId}
+      />
     );
   }
 }
@@ -61,7 +27,14 @@ class UserPage extends Component {
 const mapStateToProps = state => ({
   users: state.users.users,
   posts: state.posts.posts,
-  currentUser: state.users.currentUser
+  currentUserId: state.users.currentUserInfo.id,
+  postsLoading: state.posts.loading,
+  userLoading: state.users.loading,
 })
 
-export default connect(mapStateToProps, null)(UserPage);
+const mapDispatchToProps = dispatch => ({
+  setCurrentUserId: (id) => dispatch(setCurrentUserId(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage)
+

@@ -1,4 +1,5 @@
 import {
+  CLEAR_STORE,
   CREATE_POST_SUCCESS,
   GET_POSTS_CURRENT_USER,
   GET_POSTS_REQUESTING,
@@ -39,6 +40,14 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         postsCurrentUser: action.posts
+      }
+    }
+
+    case CLEAR_STORE: {
+      return {
+        posts: [],
+        postsCurrentUser: [],
+        loading: null
       }
     }
     default:

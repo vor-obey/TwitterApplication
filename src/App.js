@@ -5,19 +5,18 @@ import {Auth} from "./pages/Auth/Auth";
 import MainContainer from "./containers/MainContainer/MainContainer";
 import {BrowserRouter as Router, Switch} from "react-router-dom";
 import {Route} from "react-router";
-import {OauthCallback} from "./containers/OauthCallback/OauthCallback";
+import OauthCallback from "./containers/OauthCallback/OauthCallback";
 import {dateLastVisit} from "./api/userApi/dateLastVisit";
+import {connect} from "react-redux";
+import {isLogin} from "./data/store/user/userActions";
 
 const history = createBrowserHistory();
 
 class App extends Component {
-  state = ({
-    isLogin: null
-  });
 
   componentDidMount() {
     this.checkLoginStatus();
-    this.lastVisitInterval =  setInterval(dateLastVisit, 30000);
+    this.lastVisitInterval = setInterval(() => dateLastVisit(this.props.currentUserId), 30000);
   }
 
   componentWillUnmount() {
@@ -25,47 +24,41 @@ class App extends Component {
   }
 
   checkLoginStatus = async () => {
-    const isLogin = !!localStorage.getItem("token-data");
-    this.setState({isLogin});
-
-    if (!isLogin && !window.location.href.includes("/oauth-callback")) {
+    const userToken = !!this.props.token;
+    this.props.isLogin(userToken);
+    if (!userToken && !window.location.href.includes("/oauth-callback")) {
       history.replace("/login");
     }
   };
 
-  onSuccessfullyAuth = () => {
-    this.setState({isLogin: true}, () => {
-      window.location.replace("/");
-    });
-  }
-
-  handleLogout = (state) => {
-    localStorage.clear();
-    this.setState({
-      isLogin: state
-    })
-  }
-
   render() {
-    if (this.state.isLogin === null) {
-      return null;
-    }
     return (
-      <Router history={history}>
-        {!this.state.isLogin
-          ? <Switch>
+      <Router>
+        {this.props.loginStatus
+          ? <MainContainer/>
+          : <Switch>
+
             <Route exact path="/login" component={Auth}/>
-            <Route exact path="/oauth-callback" render={props => (
-              <OauthCallback {...props} onSuccessfullyAuth={this.onSuccessfullyAuth}/>
-            )}/>
+
+            <Route exact path="/oauth-callback" component={OauthCallback}/>
+
           </Switch>
-          : <MainContainer handleLogout={this.handleLogout}/>
         }
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  token: state.users.currentUserInfo.token,
+  loginStatus: state.users.loginStatus,
+  currentUserId: state.users.currentUserInfo.id,
+})
+
+const mapDispatchToProps = dispatch => ({
+  isLogin: (value) => dispatch(isLogin(value))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 

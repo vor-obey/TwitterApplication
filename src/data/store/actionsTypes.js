@@ -1,8 +1,10 @@
 export const GET_ALL_USERS = "GET_ALL_USERS";
-export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
-export const GET_CURRENT_USER_SUCCESS = "GET_CURRENT_USER_SUCCESS";
 
+export const SET_USER_ID = "SET_USER_ID";
+export const IS_LOGIN = "IS_LOGIN";
+export const CLEAR_STORE = "CLEAR_STORE";
+export const SET_CURRENT_USER_ID = "SET_CURRENT_USER_ID";
 //------------------------------------------------------
 
 export const CREATE_POST = "CREATE_POST";

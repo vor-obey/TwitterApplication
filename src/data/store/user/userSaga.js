@@ -1,16 +1,6 @@
 import {put, call} from "redux-saga/effects";
-import {GET_CURRENT_USER_SUCCESS, GET_ALL_USERS_SUCCESS} from "../actionsTypes";
-import {getCurrentUser} from "../../../api/userApi/getCurrentUser";
+import {GET_ALL_USERS_SUCCESS} from "../actionsTypes";
 import {getAllUsers} from "../../../api/userApi/getAllUsers";
-
-export function* getCurrentUserSaga() {
-  try {
-    const [user] = yield call(getCurrentUser);
-    yield put({type: GET_CURRENT_USER_SUCCESS, payload: {currentUser: user}});
-  } catch (e) {
-    console.log(e)
-  }
-}
 
 //--------------------------------------------------------------------------------
 

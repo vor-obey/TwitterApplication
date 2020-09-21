@@ -1,8 +1,7 @@
 import {dateNow} from "../../DateNow/Date";
 
-export const dateLastVisit = async () => {
-  const userId = +localStorage.getItem("user-id");
-  await fetch(`http://localhost:3002/users/${userId}`,{
+export const dateLastVisit = async (id) => {
+  await fetch(`http://localhost:3002/users/${id}`,{
     method: "PATCH",
     headers: {
       Accept: 'application/json',
