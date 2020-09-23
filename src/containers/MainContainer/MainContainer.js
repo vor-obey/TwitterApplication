@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import "./MainContainer.sass";
 import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 import {Switch, Route, Redirect, useLocation} from "react-router-dom";
