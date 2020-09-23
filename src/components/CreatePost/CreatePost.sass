@@ -3,22 +3,30 @@
 .tweets
   box-sizing: border-box
   position: relative
-  margin-bottom: 55px
+  //margin-bottom: 55px
   padding: 0 10px
+  border-bottom: 6px solid $border
+  height: 190px
 
   .textarea-container
+    display: flex
+
+    img
+      width: 50px
+      height: 50px
+      border-radius: 50%
 
     textarea
       width: 100%
-      border: 1px solid #778794
-      outline-color: $main-blue
+      outline: none
       resize: none
-      padding: 10px
+      padding: 15px
       box-sizing: border-box
       font-size: 20px
       color: #778794
-      border-radius: 5px
+      border: none
+      border-bottom: 1px solid $border
 
 .post
-  top: 130px
+  top: 135px
   right: 10px

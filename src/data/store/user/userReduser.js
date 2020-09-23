@@ -1,5 +1,5 @@
 import {
-  GET_ALL_USERS_SUCCESS, SET_USER_ID, IS_LOGIN, CLEAR_STORE, SET_CURRENT_USER_ID,
+  GET_ALL_USERS_SUCCESS, SET_USER_ID, IS_LOGIN, CLEAR_STORE, SET_CURRENT_USER_ID, IS_ERROR, CLEAR_ERROR,
 } from "../actionsTypes";
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
   currentUserInfo: {
     id: null,
     token: null,
-  }
+  },
+  error: null
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -45,6 +46,19 @@ export const userReducer = (state = initialState, action) => {
       }
     }
 
+    case IS_ERROR: {
+      return {
+        ...state,
+        error: action.payload
+      }
+    }
+    case CLEAR_ERROR: {
+      return {
+        ...state,
+        error: false
+      }
+    }
+
     case CLEAR_STORE: {
       return {
         users: [],
@@ -54,7 +68,8 @@ export const userReducer = (state = initialState, action) => {
         currentUserInfo: {
           id: null,
           token: null,
-        }
+        },
+        error: null
       }
     }
 default:

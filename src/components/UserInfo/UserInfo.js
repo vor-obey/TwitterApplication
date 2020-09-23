@@ -6,7 +6,7 @@ export const UserInfo = ({name, email, login, created_at, public_repos}) => {
   return(
     <div className="user-profile-data">
       <h2 className="user-profile-data-name">{name}</h2>
-      <p>{email ? email : login}</p>
+      <p>{email || login}</p>
       <p><i className="far fa-calendar-alt"/>On GitHub since {dateRegistration}</p>
       <p>{name} is a developer with {public_repos} public repositories </p>
     </div>

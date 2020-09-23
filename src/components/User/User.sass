@@ -2,13 +2,20 @@
 
 .user-profile
   width: 700px
-  min-width: 400px
   position: relative
   border-right: 1px solid #E6ECF0
-  margin-right: 20px
+  z-index: 8
 
   > h2
-    padding-left: 10px
+    margin: 0
+    padding: 20px 0 20px 10px
+    position: sticky
+    border-bottom: 1px solid $border
+    top: 0
+    z-index: 10
+    background: #fff
+    width: 100%
+    box-sizing: border-box
 
 .background-user-logo
   width: 100%
@@ -78,4 +85,10 @@
     color: $main-blue
     cursor: pointer
 
-
+@media screen and (max-width: 767px)
+  .user-profile
+    width: 100%
+    max-width: 100%
+    margin-right: 0
+    margin-bottom: 70px
+    border-right: none

@@ -2,12 +2,13 @@
 
 .navigation-menu
   min-width: 350px
-  border-right: 1px solid #E6ECF0
+  border-right: 1px solid $border
   min-height: 100vh
 
 .wrapper
-  margin-top: 20px
-  margin-left: 150px
+  padding-top: 20px
+  width: 250px
+  padding-left: 100px
   position: fixed
   height: 100vh
 
@@ -21,6 +22,10 @@
   a
     text-decoration: none
     color: #000
+    transition: .2s
+
+    &:hover
+      color: $main-blue
 
   li
     list-style: none
@@ -31,3 +36,53 @@
     .fas-logo
       font-size: 25px
       margin-right: 20px
+
+.log-out-container
+  position: absolute
+  bottom: 40px
+
+@media screen and (max-width: 1023px)
+  .list-items
+    span
+      display: none
+
+  .navigation-menu
+    min-width: 130px
+
+  .wrapper
+    padding-left: 50px
+
+@media screen and (max-width: 767px)
+  .navigation-menu
+    min-width: 0
+    border-right: none
+    min-height: 100vh
+    position: absolute
+    z-index: 10
+    bottom: 0
+
+  .wrapper
+    padding-top: 0
+    width: 100%
+    padding-left: 0
+    height: 0
+
+  .list-items
+    display: flex
+    align-items: center
+    justify-content: space-around
+    position: fixed
+    bottom: 0
+    width: 100%
+    background: #fff
+    z-index: 20
+    height: 70px
+    margin: 0
+    border-top: 1px solid $border
+
+  .log-out-container
+    position: static
+    bottom: 0
+
+  .twitter-logo
+    display: none

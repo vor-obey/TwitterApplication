@@ -1,9 +1,27 @@
+@import "src/variables/variables-color"
+
 .feed
   width: 700px
   border-right: 1px solid #E6ECF0
-  margin-right: 20px
-  min-width: 450px
   min-height: 100vh
   box-sizing: border-box
   position: relative
-  padding-top: 20px
+
+.feed-title
+  background: #fff
+  border-bottom: 1px solid $border
+  width: 100%
+  position: sticky
+  top: 0
+  margin-top: 0
+  margin-bottom: 5px
+  padding: 20px 0 20px 10px
+  box-sizing: border-box
+  z-index: 10
+
+@media screen and (max-width: 767px)
+  .feed
+    width: 100%
+    border-right: none
+    margin-bottom: 70px
+    border-right: none

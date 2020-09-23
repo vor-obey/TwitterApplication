@@ -5,7 +5,6 @@
     padding: 20px 10px 10px 10px
     border-bottom: 1px solid #778794
     transition: .3s
-    cursor: pointer
 
     &:hover
       background: rgba(193, 226, 222, 0.2)
@@ -15,11 +14,12 @@
       width: 100%
 
       .user-name
+        color: #000
         font-weight: 600
         font-size: 20px
         margin-right: 10px
 
-      .user-email, .create-date
+      .create-date
         font-size: 18px
         margin-right: 10px
         color: #778794
@@ -38,3 +38,11 @@
       height: 50px
       border-radius: 50%
       margin-right: 15px
+
+.hide-text
+  display: -webkit-box
+  -webkit-line-clamp: 3
+  -webkit-box-orient: vertical
+  max-width: 100%
+  overflow: hidden
+  text-overflow: ellipsis

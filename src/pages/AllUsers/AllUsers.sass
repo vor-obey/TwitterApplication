@@ -1,9 +1,24 @@
+@import "src/variables/variables-color"
+
 .all-users
   border-right: 1px solid #E6ECF0
-  margin-right: 20px
-  min-width: 450px
   min-height: 100vh
   box-sizing: border-box
   width: 700px
-  padding: 15px 30px 20px 30px
   position: relative
+
+.all-users-title
+  margin: 0
+  padding: 20px 0 20px 10px
+  position: sticky
+  border-bottom: 1px solid $border
+  top: 0
+  z-index: 10
+  background: #fff
+  width: 100%
+  box-sizing: border-box
+
+@media screen and (max-width: 767px)
+  .all-users
+    width: 100%
+    border-right: 1px solid #E6ECF0

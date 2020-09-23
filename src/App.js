@@ -10,7 +10,7 @@ import {dateLastVisit} from "./api/userApi/dateLastVisit";
 import {connect} from "react-redux";
 import {isLogin} from "./data/store/user/userActions";
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 
 class App extends Component {
 
@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <Router>
         {this.props.loginStatus
-          ? <MainContainer/>
+          ? <MainContainer />
           : <Switch>
 
             <Route exact path="/login" component={Auth}/>
