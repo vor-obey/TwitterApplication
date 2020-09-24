@@ -1,5 +1,5 @@
 import {put, call} from "redux-saga/effects"
-import {CREATE_POST_SUCCESS, GET_POSTS_CURRENT_USER, GET_POSTS_SUCCESS} from "../actionsTypes";
+import {CREATE_POST_SUCCESS, GET_POSTS_SUCCESS} from "../actionsTypes";
 import {getCurrentPost} from "../../../api/postsApi/getCurrentPost";
 import {getAllPosts} from "../../../api/postsApi/getAllPosts";
 

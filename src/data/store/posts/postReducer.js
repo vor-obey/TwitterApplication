@@ -1,7 +1,6 @@
 import {
   CLEAR_STORE,
   CREATE_POST_SUCCESS,
-  GET_POSTS_CURRENT_USER,
   GET_POSTS_REQUESTING,
   GET_POSTS_SUCCESS
 } from "../actionsTypes";
@@ -33,13 +32,6 @@ export const postReducer = (state = initialState, action) => {
         ...state,
         posts: action.payload.posts,
         loading: false
-      }
-    }
-
-    case GET_POSTS_CURRENT_USER: {
-      return {
-        ...state,
-        postsCurrentUser: action.posts
       }
     }
 
