@@ -15,11 +15,12 @@ class LogOut extends Component {
     this.props.isLogin(false)
   }
 
-  handleVisibleBtn = () => (
+  handleVisibleBtn = () => {
+    setTimeout(() => this.setState({visibleBtn: false}), 2000)
     this.setState({
       visibleBtn: !this.state.visibleBtn
     })
-  )
+  }
 
   render() {
     const {users, currentUserId} = this.props;
@@ -32,7 +33,15 @@ class LogOut extends Component {
 
     return (
       <div className="log-out-wrapper">
-        <img onClick={this.handleVisibleBtn} src={user.avatar_url} alt=""/>
+        <img className="log-out-h" src={user.avatar_url} alt=""/>
+
+        <Link to="/login">
+          <img
+            className="log-out-m"
+            onClick={this.handleLogout}
+            src={user.avatar_url}
+            alt="ops"/>
+        </Link>
 
         <div className="log-out-user-info">
           <span>{user.name}</span>
@@ -42,9 +51,10 @@ class LogOut extends Component {
         <div onClick={this.handleVisibleBtn} className="arrow-icon">
           <i className="fas fa-angle-down"/>
         </div>
+
         <Link to="/login" onClick={this.handleLogout}>
           <div className={btnVisible}>
-            Log Out
+            Log Out {user.name || user.login}
           </div>
         </Link>
 
