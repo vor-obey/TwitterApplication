@@ -4,9 +4,7 @@ export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
 export const SET_USER_ID = "SET_USER_ID";
 export const IS_LOGIN = "IS_LOGIN";
 export const CLEAR_STORE = "CLEAR_STORE";
-export const SET_CURRENT_USER_ID = "SET_CURRENT_USER_ID";
-export const IS_ERROR = "IS_ERROR";
-export const CLEAR_ERROR = "CLEAR_ERROR";
+
 //------------------------------------------------------
 
 export const CREATE_POST = "CREATE_POST";

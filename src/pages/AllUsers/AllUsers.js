@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./AllUsers.sass";
 import {UsersListItem} from "../../components/UsersListItem/UsersListItem";
-import {getAllUsers, setCurrentUserId} from "../../data/store/user/userActions";
+import {getAllUsers} from "../../data/store/user/userActions";
 import {connect} from "react-redux";
 
 class AllUsers extends Component {
@@ -19,7 +19,6 @@ class AllUsers extends Component {
             user.id !== currentUserId &&
             <UsersListItem
               uniqueId={user.id}
-              getId={() => this.props.setCurrentUserId(user.id)}
               key={user.id}
               avatar={user.avatar_url}
               name={user.name}
@@ -38,7 +37,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentUserId: (id) => dispatch(setCurrentUserId(id)),
   getAllUsers: () => dispatch(getAllUsers()),
 })
 

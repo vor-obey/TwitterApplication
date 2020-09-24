@@ -7,7 +7,7 @@ class CreatePost extends Component {
     postValue: ""
   })
 
-  onChangeInputTextArea = (e) => {
+  onChangeInput = (e) => {
     this.setState({
       postValue: e.target.value
     })
@@ -39,9 +39,10 @@ class CreatePost extends Component {
     return (
       <div className="tweets">
         <div className="textarea-container">
+
           <img src={user.avatar_url} alt=""/>
           <textarea
-            onChange={this.onChangeInputTextArea}
+            onChange={this.onChangeInput}
             value={postValue}
             name="add-tweet"
             rows="4"

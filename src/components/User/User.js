@@ -11,7 +11,7 @@ class User extends Component {
       return <Loader/>
     }
 
-    const {user, posts, postsLoading, currentUserId, setCurrentUserId} = this.props;
+    const {user, posts, postsLoading, currentUserId} = this.props;
 
     return (
       <div className="user-profile">
@@ -36,9 +36,7 @@ class User extends Component {
           ? <Loader/>
           : <Posts
             posts={posts}
-            id={user.id}
             currentUserId={currentUserId}
-            setCurrentUserId={setCurrentUserId}
           />
         }
 

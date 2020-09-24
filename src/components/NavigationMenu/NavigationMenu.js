@@ -8,9 +8,7 @@ const NavigationMenu = () => {
     <div className="navigation-menu">
       <div className="wrapper">
 
-        <div className="twitter-logo">
-          <i className="fab fa-twitter"/>
-        </div>
+        <i className="fab fa-twitter"/>
 
         <ul className="list-items">
 

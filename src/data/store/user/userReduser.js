@@ -1,17 +1,18 @@
 import {
-  GET_ALL_USERS_SUCCESS, SET_USER_ID, IS_LOGIN, CLEAR_STORE, SET_CURRENT_USER_ID, IS_ERROR, CLEAR_ERROR,
+  GET_ALL_USERS_SUCCESS,
+  SET_USER_ID,
+  IS_LOGIN,
+  CLEAR_STORE,
 } from "../actionsTypes";
 
 const initialState = {
   users: [],
-  userId: null,
   loading: true,
   loginStatus: null,
   currentUserInfo: {
     id: null,
     token: null,
-  },
-  error: null
+  }
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -31,13 +32,6 @@ export const userReducer = (state = initialState, action) => {
       }
     }
 
-    case SET_CURRENT_USER_ID: {
-      return {
-        ...state,
-        userId: action.payload
-      }
-    }
-
     case GET_ALL_USERS_SUCCESS: {
       return {
         ...state,
@@ -46,33 +40,18 @@ export const userReducer = (state = initialState, action) => {
       }
     }
 
-    case IS_ERROR: {
-      return {
-        ...state,
-        error: action.payload
-      }
-    }
-    case CLEAR_ERROR: {
-      return {
-        ...state,
-        error: false
-      }
-    }
-
     case CLEAR_STORE: {
       return {
         users: [],
-        userId: null,
         loading: true,
         loginStatus: null,
         currentUserInfo: {
           id: null,
           token: null,
-        },
-        error: null
+        }
       }
     }
-default:
-  return state;
-}
+    default:
+      return state;
+  }
 }

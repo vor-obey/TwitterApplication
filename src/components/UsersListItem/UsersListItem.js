@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export const UsersListItem = (props) => {
   return (
-    <Link to={`/user/${props.uniqueId}`} onClick={props.getId}>
+    <Link to={`/user/${props.uniqueId}`} >
       <div className="users-list">
         <div className="user-info">
 

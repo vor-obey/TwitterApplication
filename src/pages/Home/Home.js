@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import User from "../../components/User/User";
 import {connect} from "react-redux";
-import {clearError, getAllUsers} from "../../data/store/user/userActions";
+import {getAllUsers} from "../../data/store/user/userActions";
 import {getPosts} from "../../data/store/posts/postAction";
 
 class Home extends Component {
@@ -9,7 +9,6 @@ class Home extends Component {
   componentDidMount() {
     this.props.getAllUsers();
     this.props.getPosts();
-    this.props.clearError();
   }
 
   render() {
@@ -39,7 +38,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getAllUsers: () => dispatch(getAllUsers()),
   getPosts: () => dispatch(getPosts()),
-  clearError: () => dispatch(clearError())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

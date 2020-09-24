@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import User from "../../components/User/User";
 import {connect} from "react-redux";
-import {getAllUsers, setCurrentUserId} from "../../data/store/user/userActions";
+import {getAllUsers} from "../../data/store/user/userActions";
 import {getPosts} from "../../data/store/posts/postAction";
 
 class UserPage extends Component {
@@ -15,7 +15,7 @@ class UserPage extends Component {
     const path = window.location.href.split("/");
     const userId = Number(path[path.length-1]);
 
-    const {users, posts, postsLoading, userLoading, currentUserId, setCurrentUserId} = this.props;
+    const {users, posts, postsLoading, userLoading, currentUserId} = this.props;
     const user = users.filter(user => user.id === userId)[0];
     const userPosts = posts.filter(post => +post.creatorId === userId)
     return (
@@ -25,7 +25,6 @@ class UserPage extends Component {
       postsLoading={postsLoading}
       userLoading={userLoading}
       currentUserId={currentUserId}
-      setCurrentUserId={setCurrentUserId}
       />
     );
   }
@@ -40,7 +39,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUserId: (id) => dispatch(setCurrentUserId(id)),
   getAllUsers: () => dispatch(getAllUsers()),
   getPosts: () => dispatch(getPosts()),
 })
